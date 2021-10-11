@@ -18,12 +18,10 @@ export class TemperatureProvider {
     const response = await this.clientAxios.get('weather', {
       params: { q: city },
     });
-    console.log(typeof response.data)
     const temperaturas = {
       kelvin: response.data['main']['temp'],
       celsius: (response.data['main']['temp'] - 273.15).toFixed(2),
-    }
-
+    };
     return JSON.parse(JSON.stringify(temperaturas));
   }
 }
